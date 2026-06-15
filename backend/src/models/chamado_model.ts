@@ -42,4 +42,10 @@ export class ChamadoModel {
         const response = await pool.query(query);
         return response.rows[0];
     }
+
+    public async getResponsibleById(id: number): Promise<ResponsibleType> {
+        const query = `SELECT id, nome FROM responsaveis WHERE id = $1`;
+        const response = await pool.query(query, [id]);
+        return response.rows[0];
+    }
 }
