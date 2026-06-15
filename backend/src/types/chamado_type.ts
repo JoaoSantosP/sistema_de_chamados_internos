@@ -1,25 +1,29 @@
-export type ChamadoTypeResponse ={
+import z from 'zod';
+import { CallSchema } from "../schema/chamadoValidation";
+
+export type CallTypeResponse ={
     id: number,
     titulo: string,
     solicitante: string,
     descricao: string,
-    prioridade: string,
-    status: "ABERTO" | "EM ANDAMENTO" | "RESOLVIDO" | "FECHADO",
+    prioridade: "BAIXA" | "MEDIA" | "ALTA",
+    status: "ABERTO" | "EM_ANDAMENTO" | "RESOLVIDO" | "FECHADO",
     responsavelId: number,
-    data_criacao: Date,
+    dataCriacao: Date,
 }
 
-export type ChamadoTypeCreate ={
+export type CallTypeCreate = z.infer<typeof CallSchema>;
+/* {
     titulo: string,
     solicitante: string,
     descricao: string,
-    prioridade: string,
-    status: "ABERTO" | "EM ANDAMENTO" | "RESOLVIDO" | "FECHADO",
-    responsavelId: number,
-    data_criacao: Date,
-}
-
-export type ResponsavelType = {
+    prioridade: "BAIXA" | "MEDIA" | "ALTA",
+    status: "ABERTO" | "EM_ANDAMENTO" | "RESOLVIDO" | "FECHADO",
+    responsavelId?: number,
+    dataCriacao: Date,
+} */
+export type ResponsibleType = {
     id: number,
     nome: string,
+    totalChamados: number,
 }
