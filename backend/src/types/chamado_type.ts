@@ -1,5 +1,5 @@
 import z from 'zod';
-import { CallSchema } from "../schema/chamadoValidation";
+import { callSchema } from "../schema/chamadoValidation";
 
 export type CallTypeResponse ={
     id: number,
@@ -12,7 +12,7 @@ export type CallTypeResponse ={
     dataCriacao: Date,
 }
 
-export type CallTypeCreate = z.infer<typeof CallSchema>;
+export type CallTypeCreate = z.infer<typeof callSchema>;
 /* {
     titulo: string,
     solicitante: string,
