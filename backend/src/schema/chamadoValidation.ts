@@ -1,6 +1,6 @@
 import z from 'zod';
 
-export const CallSchema = z.object({
+export const callSchema = z.object({
     titulo: z.string().min(1, 'O título é obrigatório'),
     solicitante: z.string().min(1, 'O solicitante é obrigatório'),
     descricao: z.string().min(1, 'A descrição é obrigatória'),
