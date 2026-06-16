@@ -10,24 +10,26 @@ export class ChamadoModel {
             c.descricao, 
             c.prioridade, 
             c.status, 
-            c.data_criacao, 
+            c.data_abertura, 
             r.nome as responsavel 
             FROM 
-            chamados c LEFT JOIN responsaveis r ON c.responsavelId = r.id`
+            chamados c LEFT JOIN responsaveis r ON c.responsavel_id = r.id`
         const response = await pool.query( query );
         return response.rows;
     }
     
     public async create(chamado: CallTypeCreate): Promise<CallTypeResponse> {
-        const { titulo, solicitante, descricao, prioridade, status, responsavelId, dataCriacao } = chamado;
+        const { titulo, solicitante, descricao, prioridade, status, responsavelId } = chamado;
         const query = `INSERT INTO chamados 
         (titulo, 
         solicitante, 
         descricao, 
         prioridade, status, 
-        responsavelId, 
-        data_criacao) VALUES ($1, $2, $3, $4, $5, $6, $7)`;
-        const response = await pool.query(query, [titulo, solicitante, descricao, prioridade, status, responsavelId, dataCriacao]);
+        responsavel_id
+        ) VALUES ($1, $2, $3, $4, $5, $6)
+        RETURNING * 
+        `;
+        const response = await pool.query(query, [titulo, solicitante, descricao, prioridade, status, responsavelId ]);
         return response.rows[0];
     }
 
