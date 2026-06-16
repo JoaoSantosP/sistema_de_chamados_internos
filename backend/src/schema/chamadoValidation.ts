@@ -7,5 +7,4 @@ export const callSchema = z.object({
     prioridade: z.enum(['BAIXA', 'MEDIA', 'ALTA'], 'A prioridade deve ser BAIXA, MEDIA ou ALTA'),
     status: z.enum(['ABERTO', 'EM_ANDAMENTO', 'RESOLVIDO', 'FECHADO'], 'O status deve ser ABERTO, EM_ANDAMENTO, RESOLVIDO ou FECHADO'),
     responsavelId: z.number().optional(),
-    dataCriacao: z.date(),
 });
