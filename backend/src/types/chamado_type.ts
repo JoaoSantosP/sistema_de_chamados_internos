@@ -9,7 +9,7 @@ export type CallTypeResponse ={
     prioridade: "BAIXA" | "MEDIA" | "ALTA",
     status: "ABERTO" | "EM_ANDAMENTO" | "RESOLVIDO" | "FECHADO",
     responsavelId: number,
-    dataCriacao: Date,
+    dataAbertura: Date,
 }
 
 export type CallTypeCreate = z.infer<typeof callSchema>;
