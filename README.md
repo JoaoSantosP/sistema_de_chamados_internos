@@ -47,7 +47,7 @@ tests/
 Clone o repositório:
 
 ```bash
-git clone <url-do-repositorio>
+git clone git@github.com:JoaoSantosP/sistema_de_chamados_internos.git
 cd backend
 ```
 
@@ -94,13 +94,41 @@ npm test
 ```http
 GET /chamados
 ```
+Exemplo de resposta:
 
+```json
+[
+  {
+    "id": 1,
+    "titulo": "Internet indisponível",
+    "solicitante": "João Vitor",
+    "descricao": "Sem acesso à internet no setor financeiro",
+    "prioridade": "ALTA",
+    "status": "ABERTO",
+    "data_abertura": "2026-06-16T01:15:22.000Z",
+    "responsavel": "Carlos Silva"
+  }
+]
+```
 ### Criar Chamado
 
 ```http
 POST /chamados
 ```
+Exemplo de resposta:
 
+```json
+{
+  "id": 3,
+  "titulo": "Notebook não liga",
+  "solicitante": "Pedro Santos",
+  "descricao": "Equipamento não inicializa",
+  "prioridade": "ALTA",
+  "status": "ABERTO",
+  "responsavel_id": 1,
+  "data_abertura": "2026-06-16T03:45:10.000Z"
+}
+```
 Exemplo de payload:
 
 ```json
