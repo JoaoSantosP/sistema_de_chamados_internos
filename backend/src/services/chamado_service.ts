@@ -2,8 +2,10 @@ import { ChamadoModel } from '../models/chamado_model';
 import { CallTypeCreate, CallTypeResponse, ResponsibleType } from '../types/chamado_type';
 
 export class ChamadoService {
-    private chamadoModel: ChamadoModel = new ChamadoModel();
 
+    constructor(
+        private chamadoModel: ChamadoModel
+    ) {}
     public async listAllCalls(): Promise<CallTypeResponse[]> {
         const response = await this.chamadoModel.listAll();
         if (!response) {
@@ -12,12 +14,6 @@ export class ChamadoService {
         return response;
     }
 
-    /* public async getResponsibleWithLessCalls(id: number): Promise<ResponsibleType> {
-        if (!id) {
-            const response = await this.chamadoModel.responsibleWithLessCalls();
-
-        }
-    } */
    public async createCall(callData: CallTypeCreate): Promise<CallTypeResponse> {
         let responsibleId = callData.responsavelId;
         // verifica se o id do responsável foi fornecido, caso contrário, atribui o chamado ao responsável com menos chamados

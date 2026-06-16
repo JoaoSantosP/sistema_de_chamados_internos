@@ -3,7 +3,10 @@ import { Request, Response } from 'express';
 import {callSchema}  from '../schema/chamadoValidation';
 
 export class ChamadoController {
-    private chamadoService: ChamadoService = new ChamadoService();
+    
+    constructor(
+        private chamadoService: ChamadoService
+    ) {}
     public async listAllCalls(_req: Request, res: Response): Promise<Response> {
         try {
             const response = await this.chamadoService.listAllCalls();
@@ -19,7 +22,7 @@ export class ChamadoController {
             const response = await this.chamadoService.createCall(callValidated);
             return res.status(201).json(response);
         } catch (error: any) {
-            return res.status(400).json({ error: error.message });
+            return res.status(500).json({ error: error.message });
         }
     }
 }
