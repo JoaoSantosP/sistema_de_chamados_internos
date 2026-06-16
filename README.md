@@ -106,7 +106,7 @@ Exemplo de resposta:
     "prioridade": "ALTA",
     "status": "ABERTO",
     "data_abertura": "2026-06-16T01:15:22.000Z",
-    "responsavel": "Carlos Silva"
+    "responsavel": "Maria"
   }
 ]
 ```
@@ -138,7 +138,7 @@ Exemplo de payload:
   "prioridade": "ALTA",
   "status": "ABERTO",
   "solicitante": "João Vitor",
-  "responsavelId": 1
+  "responsavelId": 2
 }
 ```
 
