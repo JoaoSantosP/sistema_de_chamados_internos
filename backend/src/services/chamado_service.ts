@@ -37,4 +37,25 @@ export class ChamadoService {
         return response;
 
    }
+
+   public async listAllResponsibles(): Promise<ResponsibleType[]> {
+    return await this.chamadoModel.listAllResponsibles();
+    }
+
+    public async updateStatus(id: number, status: 'ABERTO' | 'EM_ANDAMENTO' | 'RESOLVIDO' | 'FECHADO'): Promise<CallTypeResponse> {
+
+    const chamadoAtualizado =
+        await this.chamadoModel.updateStatus(
+            id,
+            status
+        );
+
+    if (!chamadoAtualizado) {
+        throw new Error(
+            'Chamado não encontrado'
+        );
+    }
+
+    return chamadoAtualizado;
+}
 }
