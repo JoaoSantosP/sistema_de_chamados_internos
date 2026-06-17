@@ -92,6 +92,45 @@ exit
 Esse processo precisa ser feito apenas uma vez.
 
 ---
+## Variáveis de Ambiente
+
+Antes de iniciar a aplicação, crie um arquivo `.env` dentro da pasta `backend`.
+
+Estrutura:
+
+```text
+backend/
+├── src/
+├── tests/
+├── .env
+├── package.json
+└── ...
+```
+
+Conteúdo do arquivo:
+
+```env
+PORT=3000
+
+DB_HOST=db
+DB_PORT=5432
+DB_NAME=service_desk
+DB_USER=postgres
+DB_PASSWORD=postgres
+```
+
+### Descrição das variáveis
+
+| Variável | Descrição |
+|-----------|-----------|
+| PORT | Porta da aplicação backend |
+| DB_HOST | Host do banco PostgreSQL |
+| DB_PORT | Porta utilizada pelo PostgreSQL |
+| DB_NAME | Nome do banco de dados |
+| DB_USER | Usuário do banco |
+| DB_PASSWORD | Senha do banco |
+
+Após criar o arquivo `.env`, a aplicação pode ser iniciada normalmente utilizando os comandos descritos neste README.
 
 # Subindo a Aplicação
 
