@@ -124,11 +124,11 @@ PG_PASSWORD=postgres
 | Variável | Descrição |
 |-----------|-----------|
 | PORT | Porta da aplicação backend |
-| DB_HOST | Host do banco PostgreSQL |
-| DB_PORT | Porta utilizada pelo PostgreSQL |
-| DB_NAME | Nome do banco de dados |
-| DB_USER | Usuário do banco |
-| DB_PASSWORD | Senha do banco |
+| PG_HOST | Host do banco PostgreSQL |
+| PG_PORT | Porta utilizada pelo PostgreSQL |
+| PG_DATABASE | Nome do banco de dados |
+| PG_USER | Usuário do banco |
+| PG_PASSWORD | Senha do banco |
 
 Após criar o arquivo `.env`, a aplicação pode ser iniciada normalmente utilizando os comandos descritos neste README.
 
