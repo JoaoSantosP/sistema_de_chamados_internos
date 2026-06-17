@@ -112,11 +112,11 @@ Conteúdo do arquivo:
 ```env
 PORT=3000
 
-DB_HOST=db
-DB_PORT=5432
-DB_NAME=service_desk
-DB_USER=postgres
-DB_PASSWORD=postgres
+PG_HOST=db
+PG_PORT=5432
+PG_DATABASE=service_desk
+PG_USER=postgres
+PG_PASSWORD=postgres
 ```
 
 ### Descrição das variáveis
