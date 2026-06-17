@@ -25,4 +25,28 @@ export class ChamadoController {
             return res.status(500).json({ error: error.message });
         }
     }
+
+    public async listAllResponsibles(_req: Request, res: Response): Promise<Response> {
+        const responsibles = await this.chamadoService.listAllResponsibles();
+
+        return res.status(200).json(responsibles);
+    }
+
+    public async updateStatus(req: Request, res: Response): Promise<Response> {
+
+    const id = Number(req.params.id);
+
+    const { status } = req.body;
+
+    const response =
+        await this.chamadoService.updateStatus(
+            id,
+            status
+        );
+
+    return res.status(200).json({
+        msg: 'Status atualizado com sucesso',
+        chamado: response,
+    });
+}
 }
