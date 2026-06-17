@@ -50,4 +50,31 @@ export class ChamadoModel {
         const response = await pool.query(query, [id]);
         return response.rows[0];
     }
+
+    public async listAllResponsibles(): Promise<ResponsibleType[]> {
+        const query = 'SELECT id, nome FROM responsaveis';
+        const response = await pool.query(query);
+
+        return response.rows;
+    }
+
+    public async updateStatus(
+    id: number,
+    status: 'ABERTO' | 'EM_ANDAMENTO' | 'RESOLVIDO' | 'FECHADO'
+): Promise<CallTypeResponse | null> {
+
+    const query = `
+        UPDATE chamados
+        SET status = $1
+        WHERE id = $2
+        RETURNING *;
+    `;
+
+    const response = await pool.query(
+        query,
+        [status, id]
+    );
+
+    return response.rows[0] ?? null;
+}
 }
