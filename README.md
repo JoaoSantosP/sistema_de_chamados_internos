@@ -56,9 +56,7 @@ sistema_de_chamados_internos/
 
 ---
 
-# Primeira Execução
-
-Clone o repositório:
+# Clonando o Projeto
 
 ```bash
 git clone git@github.com:JoaoSantosP/sistema_de_chamados_internos.git
@@ -67,32 +65,7 @@ cd sistema_de_chamados_internos
 
 ---
 
-# Criando o Frontend (somente na primeira vez)
-
-Caso a pasta frontend ainda não exista:
-
-```bash
-docker compose run --rm frontend sh
-```
-
-Dentro do container execute:
-
-```bash
-npm create vite@latest . -- --template react-ts
-npm install
-npm install bootstrap
-```
-
-Saia do container:
-
-```bash
-exit
-```
-
-Esse processo precisa ser feito apenas uma vez.
-
----
-## Variáveis de Ambiente
+# Variáveis de Ambiente
 
 Antes de iniciar a aplicação, crie um arquivo `.env` dentro da pasta `backend`.
 
@@ -119,7 +92,7 @@ PG_USER=postgres
 PG_PASSWORD=postgres
 ```
 
-### Descrição das variáveis
+### Descrição das Variáveis
 
 | Variável | Descrição |
 |-----------|-----------|
@@ -130,9 +103,9 @@ PG_PASSWORD=postgres
 | PG_USER | Usuário do banco |
 | PG_PASSWORD | Senha do banco |
 
-Após criar o arquivo `.env`, a aplicação pode ser iniciada normalmente utilizando os comandos descritos neste README.
+---
 
-# Subindo a Aplicação
+# Executando a Aplicação
 
 Na raiz do projeto execute:
 
@@ -146,15 +119,16 @@ Ou em segundo plano:
 docker compose up -d
 ```
 
+Durante a inicialização:
+
+- O PostgreSQL será criado automaticamente.
+- Os scripts de banco serão executados automaticamente.
+- O backend instalará as dependências e iniciará a API.
+- O frontend instalará as dependências e iniciará a aplicação React.
+
 ---
 
 # Serviços Disponíveis
-
-### Backend
-
-```text
-http://localhost:3000
-```
 
 ### Frontend
 
@@ -162,7 +136,13 @@ http://localhost:3000
 http://localhost:5173
 ```
 
-### Banco de Dados PostgreSQL
+### Backend
+
+```text
+http://localhost:3000
+```
+
+### PostgreSQL
 
 ```text
 Host: localhost
@@ -183,7 +163,7 @@ backend/src/database/schema.sql
 backend/src/database/seed.sql
 ```
 
-Eles criam a estrutura do banco e inserem os dados iniciais.
+Esses scripts criam a estrutura inicial do banco e inserem os dados necessários para utilização da aplicação.
 
 ---
 
@@ -205,7 +185,7 @@ npm test
 
 # Funcionalidades Implementadas
 
-### Backend
+## Backend
 
 - Listagem de chamados
 - Criação de chamados
@@ -215,7 +195,7 @@ npm test
 - Persistência em PostgreSQL
 - Testes unitários da camada de serviço
 
-### Frontend
+## Frontend
 
 - Listagem de chamados
 - Busca por título
@@ -223,7 +203,7 @@ npm test
 - Filtro por responsável
 - Criação de chamados
 - Visualização detalhada por expansão de card
-- Atualização de status de chamados
+- Atualização de status dos chamados
 
 ---
 
@@ -288,7 +268,7 @@ Resposta:
 }
 ```
 
-Caso `responsavelId` não seja informado, o sistema atribui automaticamente o responsável com menor quantidade de chamados.
+Caso o campo `responsavelId` não seja informado, o sistema atribui automaticamente o responsável com menor quantidade de chamados.
 
 ---
 
@@ -348,7 +328,7 @@ Resposta:
 - O responsável informado deve existir.
 - Caso nenhum responsável seja informado, o sistema seleciona automaticamente o responsável com menor quantidade de chamados.
 - Todo chamado recebe data de abertura automaticamente.
-- O status pode ser atualizado posteriormente.
+- O status do chamado pode ser atualizado posteriormente.
 - Os dados são persistidos em PostgreSQL.
 
 ---
