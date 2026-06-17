@@ -10,7 +10,8 @@ describe('ChamadoService', () => {
             listAll: jest.fn(),
             create: jest.fn(),
             getResponsibleById: jest.fn(),
-            responsibleWithLessCalls: jest.fn()
+            responsibleWithLessCalls: jest.fn(),
+            updateStatus: jest.fn()
         };
 
         service = new ChamadoService(mockModel);
@@ -161,6 +162,60 @@ describe('ChamadoService', () => {
             await expect(
                 service.createCall(callData)
             ).rejects.toThrow('Erro ao criar chamado');
+        });
+    });
+    describe('updateStatus', () => {
+        it('deve atualizar o status de um chamado', async () => {
+            const chamadoAtualizado = {
+                id: 1,
+                titulo: 'Internet caiu',
+                descricao: 'Sem conexão',
+                prioridade: 'ALTA',
+                status: 'RESOLVIDO',
+                solicitante: 'João',
+                responsavelId: 1
+            };
+
+            mockModel.updateStatus.mockResolvedValue(
+                chamadoAtualizado
+            );
+
+            const result =
+                await service.updateStatus(
+                    1,
+                    'RESOLVIDO'
+                );
+
+            expect(result).toEqual(
+                chamadoAtualizado
+            );
+
+            expect(mockModel.updateStatus)
+                .toHaveBeenCalledWith(
+                    1,
+                    'RESOLVIDO'
+                );
+        });
+
+        it('deve lançar erro quando o chamado não existir', async () => {
+            mockModel.updateStatus.mockResolvedValue(
+                null
+            );
+
+            await expect(
+                service.updateStatus(
+                    999,
+                    'RESOLVIDO'
+                )
+            ).rejects.toThrow(
+                'Chamado não encontrado'
+            );
+
+            expect(mockModel.updateStatus)
+                .toHaveBeenCalledWith(
+                    999,
+                    'RESOLVIDO'
+                );
         });
     });
 });
