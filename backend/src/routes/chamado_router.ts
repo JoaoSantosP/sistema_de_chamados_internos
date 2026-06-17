@@ -19,4 +19,12 @@ router.post(
     (req, res) => chamadoController.createCall(req, res)
 );
 
+router.patch(
+    '/:id/status',
+    (req, res) => chamadoController.updateStatus(req, res)
+);
+
+
+
+
 export default router;
